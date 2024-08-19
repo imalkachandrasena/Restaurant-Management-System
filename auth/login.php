@@ -11,18 +11,19 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
 
+        if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
+            $errorEmail = "Invalid email format";
+        }
+            $query = "SELECT * FROM users WHERE email='$email'";
 
-        $query = "SELECT * FROM users WHERE email='$email'";
+            $data = [
+                "email" =>  $email,
+                "password" =>  $password,
+            ];
 
-        $data = [
-            "email" =>  $email,
-            "password" =>  $password,
-        ];
+            $path = "http://localhost/resttaste";
 
-        $path = "http://localhost/resttaste";
-
-        $app->login($query, $data, $path);
-
+            $app->login($query, $data, $path);
     }
 ?>
 
@@ -47,7 +48,13 @@
                     <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
                         <h5 class="section-title ff-secondary text-start text-primary fw-normal">Login</h5>
                         <h1 class="text-white mb-4">Greetings & Welcome</h1>
-                        <form class="col-md-12" method="POST" action="login.php" onsubmit="return confirmLogin();">
+                        <?php
+                            if(isset($_SESSION['userNotFound'])){
+                                echo "<div class='alert alert-danger'>User Not Found!</div>";
+                                unset($_SESSION['userNotFound']);
+                            }
+                        ?>
+                        <form class="col-md-12" method="POST" action="login.php">
                             <div class="row g-3">
                                 <div class="">
                                     <div class="form-floating">
@@ -71,11 +78,5 @@
             </div>
         <!-- Service End -->
 
-        <script>
-            function confirmLogin(){
-                alert("You have login successfully");
-                return true;
-            }
-        </script>
 
 <?php require "../includes/footer.php"; ?>

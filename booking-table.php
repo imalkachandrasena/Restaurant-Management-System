@@ -40,7 +40,7 @@
             $app->insert($query, $arr, $path);
 
         } else {
-            echo "<script>alert('invalid date pick a date starting form tomorrow')</script>";
+            echo "<script>alert('Invalid date pick a date starting form tomorrow')</script>";
             echo "<script>window.location.href='index.php'</script>";
 
         }

@@ -136,7 +136,6 @@ class App {
             //password
             if(password_verify($data['password'], $fetch['password'])) {
                 //start session vars
-
                 $_SESSION['email'] = $fetch['email'];
                 $_SESSION['username'] = $fetch['username'];
                 $_SESSION['user_id'] = $fetch['id'];
@@ -144,7 +143,8 @@ class App {
                 header("location: ".$path."");
             }
         }else{
-            echo "<script>alert('Can not find any kind of user!')</script>";
+            $_SESSION['userNotFound'] = "User can not found";
+            return $_SESSION['userNotFound'];
         }
 
     }
@@ -162,7 +162,6 @@ class App {
                 //password
                 if(password_verify($data['password'], $fetch['password'])) {
                     //start session vars
-
                     $_SESSION['admin_email'] = $fetch['email'];
                     $_SESSION['admin_username'] = $fetch['username'];
                     $_SESSION['admin_user_id'] = $fetch['id'];
@@ -180,13 +179,13 @@ class App {
             session_start();
         }
     }
+
     //session for admin
     public function startingSessionAdmin(){
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
     }
-
 
 
     //validating sessions
@@ -200,7 +199,6 @@ class App {
         if(isset($_SESSION['admin_email'])) {
             echo "<script>window.location.href='".ADMINURL."/index.php'</script>";
         }
-
     }
 
     public function validateSessionAdminInside() {
@@ -208,5 +206,4 @@ class App {
             echo "<script>window.location.href='".ADMINURL."/admins/login-admins.php'</script>";
         }
     }
-
 }

@@ -33,7 +33,7 @@
                       <th scope="row"><?php echo $food->id; ?></th>
                       <td><?php echo $food->name; ?></td>
                       <td><img style="width: 50px; height: 50px" src="foods-images/<?php echo $food->image; ?>" </td>
-                      <td>$<?php echo $food->price; ?></td>
+                      <td>Rs.<?php echo $food->price; ?></td>
                       <td><a href="delete-foods.php?id=<?php echo $food->id; ?>" class="btn btn-danger  text-center ">delete</a></td>
                     </tr>
                   <?php endforeach; ?>

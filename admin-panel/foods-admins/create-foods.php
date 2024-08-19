@@ -19,8 +19,7 @@
         $dir = "foods-images/" . basename($image);
 
 
-        $query = "INSERT INTO foods (name, price, description, meal_id, image) VALUES (:name, 
-        :price, :description, :meal_id, :image)";
+        $query = "INSERT INTO foods (name, price, description, meal_id, image) VALUES (:name, :price, :description, :meal_id, :image)";
 
         $arr = [
             ":name" =>  $name,
@@ -36,12 +35,7 @@
           $app->register($query, $arr, $path);
 
         }
-
-
     }
-
-
-
 ?>
        <div class="row">
         <div class="col">
@@ -52,15 +46,12 @@
                 <!-- Email input -->
                 <div class="form-outline mb-4 mt-4">
                   <input type="text" name="name" id="form2Example1" class="form-control" placeholder="name" />
-                 
                 </div>
                 <div class="form-outline mb-4 mt-4">
                   <input type="text" name="price" id="form2Example1" class="form-control" placeholder="price" />
-                 
                 </div>
                 <div class="form-outline mb-4 mt-4">
                   <input type="file" name="image" id="form2Example1" class="form-control"  />
-                 
                 </div>
                 <div class="form-group">
                   <label for="exampleFormControlTextarea1">Description</label>
@@ -78,15 +69,10 @@
                 </div>
 
                 <br>
-              
 
-      
                 <!-- Submit button -->
                 <button type="submit" name="submit" class="btn btn-primary  mb-4 text-center">create</button>
-
-          
               </form>
-
             </div>
           </div>
         </div>
